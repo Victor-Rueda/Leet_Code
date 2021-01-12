@@ -1,0 +1,18 @@
+
+class Solution {
+public:
+    int SuperEggDrop(int K, int N) 
+    {
+        auto DK = vector<vector<int>>(K+1,vector<int>(N+1,0));
+        
+        int m = 0;
+        
+        while (DK[K][m]<N)
+        {
+            m++;
+            for (int k=1; k<=K; k++)
+                DK[k][m] = DK[k-1][m-1]+1+DK[k][m-1];
+        }
+        return m;
+    }
+};
